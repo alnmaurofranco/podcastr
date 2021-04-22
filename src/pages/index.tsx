@@ -129,7 +129,7 @@ export const getStaticProps: GetStaticProps = async () => {
       }),
       duration: Number(episode.file.duration),
       durationAsString: convertDurationToTimeString(Number(episode.file.duration)),
-      url: episode.file.url,
+      url: episode.file.url
     }
   })
 
@@ -141,6 +141,6 @@ export const getStaticProps: GetStaticProps = async () => {
       latestEpisodes,
       allEpisodes
     },
-    revalidate: 60 * 60 * 8
+    revalidate: 60 * 60 * 8 // 8 hours
   }
 }
