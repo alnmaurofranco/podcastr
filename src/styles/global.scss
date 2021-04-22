@@ -21,7 +21,7 @@
   --purple-800: #6f48c9;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1380px) {
   html {
     font-size: 93.75%;
   }
@@ -36,7 +36,17 @@
 body {
   background: var(--gray-50);
 }
+body::-webkit-scrollbar {
+  width: 0.55rem;
+}
 
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--purple-500);
+}
 body,
 input,
 textarea,
