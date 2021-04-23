@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { api } from '../../services/api';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
@@ -25,13 +24,13 @@ type EpisodeProps = {
 }
 
 export default function Episode({ episode }: EpisodeProps) {
-  const { isFallback } = useRouter()
+  // const { isFallback } = useRouter()
 
-  if (isFallback) {
-    return (
-      <h1>Loading...</h1>
-    )
-  }
+  // if (isFallback) {
+  //   return (
+  //     <h1>Loading...</h1>
+  //   )
+  // }
 
   return (
     <div className={styles.episode}>
@@ -66,7 +65,14 @@ export default function Episode({ episode }: EpisodeProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const { data } = await api.get('episodes');
+  // Quando eu necessito de criar antes todas as paginas e uso essa chamada.
+  const { data } = await api.get('episodes', {
+    params: {
+      _limit: 2,
+      _short: 'published_at',
+      _order: 'desc'
+    }
+  });
 
   const paths = data.map((episode: IEpisode) => {
     const { id } = episode;
@@ -75,8 +81,9 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   });
 
   return {
-    paths,
-    fallback: true, //fallback: 'blocking'
+    paths, // paths: []
+    // Quando fallback: false ele é gerado no client-server e fallback: 'blocking' e fallback: true são gerados pelo node.js
+    fallback: 'blocking',
   }
 }
 
