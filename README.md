@@ -47,7 +47,7 @@ E pronto a aplicação estára rodando e também pode ser acessada em [`localhos
 
 ## 🌟 Desafios
 
-A seguir um to-do com possiveis desafios para serem realizados nesse projeto.
+A seguir um to-do com possiveis desafios para serem realizados em breve nesse projeto.
 
 - [ ] Torna o podcastr totalmente responsivo.
 - [ ] Adicionar theme dark
